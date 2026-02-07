@@ -32,12 +32,28 @@ export const getPosts = async (req: Request, res: Response) => {
   const { page = 1, limit = 10, search, tag, author, status } = req.query;
   const query: any = { deletedAt: { $exists: false } }; // Soft delete filter
 
-  if (!req.user) {
-    query.status = 'published'; // Public only sees published
-  } else if (status) {
-    query.status = status as string;
-    if (status === 'draft') query.author = req.user!.id; // Only own drafts
+// console.log({
+//   isLoggedIn: !!req.user,
+//   userId: req.user?.id,
+//   status,
+//   finalQuery: query
+// });
+
+if (!req.user) {
+  // Guests → published only
+  query.status = 'published';
+} else {
+  if (status === 'draft') {
+    // Logged-in user → own drafts only
+    query.status = 'draft';
+    query.author = req.user.id;
+  } else {
+    // Logged-in user → published (default)
+    query.status = 'published';
   }
+}
+
+
 
   if (search) {
     query.$or = [{ title: { $regex: search, $options: 'i' } }, { content: { $regex: search, $options: 'i' } }];
