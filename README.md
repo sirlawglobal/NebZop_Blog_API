@@ -378,6 +378,3 @@ nebzo-blog-api/
 4. Push to the branch: `git push origin feature/your-feature`
 5. Submit a pull request
 
-## License
-
-This project is licensed under the ISC License.
