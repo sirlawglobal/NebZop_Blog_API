@@ -2,6 +2,8 @@
 
 A robust REST API for a blog platform built with Node.js, TypeScript, Express, and MongoDB. This API provides authentication and post management features, allowing users to register, log in, and manage blog posts with features like drafts, publishing, tagging, and search.
 
+Live On:  https://nebzop-blog-api.onrender.com
+
 ## Features
 
 - **User Authentication**: Secure registration and login with JWT tokens.
