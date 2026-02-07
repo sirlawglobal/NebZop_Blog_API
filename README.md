@@ -151,6 +151,20 @@ The API is organized into two main routes: `/api/auth` for authentication and `/
   }
   ```
 
+#### Logout User
+- **URL**: `POST /api/auth/logout`
+- **Description**: Logout the user by discarding the JWT token (handled client-side).
+- **Headers**:
+  ```
+  Authorization: Bearer <your-jwt-token>
+  ```
+- **Response (Success - 200)**:
+  ```json
+  {
+    "message": "Logged out successfully"
+  }
+  ```
+
 ### Post Endpoints
 
 #### Get Posts
